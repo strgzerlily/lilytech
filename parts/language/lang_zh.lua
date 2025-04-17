@@ -1,5 +1,5 @@
 local C=COLOR
-return{
+return {
     loadText={
         loadSFX="加载音效资源",
         loadSample="加载乐器采样",
@@ -17,27 +17,33 @@ return{
     playedLong="已经玩很久了！注意休息！",
     playedTooMuch="今天玩太久啦！打块好玩但也要适可而止哦~",
     settingWarn="正在修改不常用设置，小心操作！",
+    settingWarn2="该设置需要重启后生效",
 
     atkModeName={"随机","徽章","击杀","反击"},
     royale_remain="剩余 $1 名玩家",
     powerUp={[0]="000%UP","025%UP","050%UP","075%UP","100%UP"},
     cmb={nil,"1 Combo","2 Combo","3 Combo","4 Combo","5 Combo","6 Combo","7 Combo","8 Combo","9 Combo","10 Combo！","11 Combo！","12 Combo！","13 Combo！","14 Combo！","15 Combo！","16 Combo！","17 Combo！","18 Combo！","19 Combo！","MEGACMB"},
-    spin="-spin",
+    spin="-spin ",
+    spinNC="-spin",
     clear={"Single","Double","Triple","Techrash","Pentacrash","Hexacrash","Heptacrash","Octacrash","Nonacrash","Decacrash","Undecacrash","Dodecacrash","Tridecacrash","Tetradecacrash","Pentadecacrash","Hexadecacrash","Heptadecacrash","Octadecacrash","Nonadecacrash","Ultracrash","Impossicrash"},
     cleared="$1 lines",
     mini="Mini",b2b="B2B ",b3b="B2B2B ",
-    PC="Perfect Clear",HPC="Half Clear",
+    PC="Perfect Clear",HPC="Half PC",
     replaying="[回放]",
     tasUsing="[TAS]",
 
     stage="关卡 $1 完成",
-    great="Great！",
+    great="Great!",
     awesome="Awesome.",
-    almost="Almost！",
+    almost="Almost!",
     continue="Continue.",
     maxspeed="最高速度",
     speedup="速度加快",
     missionFailed="非任务消除",
+    infHeightOn="无限高度 开",
+    infHeightOff="无限高度 关",
+    infHeightHint="用功能键1切换",
+    highestGrade="最高段位: $1",
 
     speedLV="速度等级",
     piece="块数",line="行数",atk="攻击",eff="效率",
@@ -49,7 +55,7 @@ return{
 
     win="胜利",
     lose="失败",
-
+    torikan="未达标",
     finish="完成",
     gamewin="胜利",
     gameover="游戏结束",
@@ -61,11 +67,15 @@ return{
 
     page="页面:",
 
+    ai_puzzle="不能同时开启AI和拼图模式",
+    ai_mission="不能同时开启AI和自定义任务",
+    ai_badPiece="不能同时开启AI和含有非四连块的自定义序列",
     cc_fixed="不能同时开启CC和固定序列",
     cc_swap="不能同时开启CC和swap的暂存模式",
-    ai_prebag="不能同时开启AI和含有非四连块的自定义序列",
-    ai_mission="不能同时开启AI和自定义任务",
-    switchSpawnSFX="请开启方块出生音效",
+    cc_solid="开启CC时不能存在预先填满的行",
+    cc_field_too_high="开启CC时最高出块高度不能超过40",
+    cc_eventset_incompatible="CC不兼容规则包'$1'",
+    switchSpawnSFX="请开启方块生成音效",
     needRestart="重新开始以生效",
 
     loadError_errorMode="文件 '$1' 读取失败：无加载模式 '$2'",
@@ -86,6 +96,8 @@ return{
     dataCorrupted="数据损坏",
     pasteWrongPlace="提醒:可能粘贴错地方了",
     noFile="找不到文件",
+    invalidSequence="无效序列模式",
+    tooHighField="超过126行的场地数据已被丢弃",
 
     nowPlaying="正在播放:",
 
@@ -103,47 +115,99 @@ return{
 
     dictNote="==复制于小z词典==",
 
-    getNoticeFail="拉取公告失败",
+
+
+    -- Server's warn/error messages
+    Techrater={
+        internalError="内部错误",
+        databaseError="数据库错误",
+        invalidFormat="json格式无效",
+        invalidArguments="参数无效",
+        tooFrequent="请求太频繁",
+        notAvailable="无效请求",
+        noPermission="没有权限",
+        roomNotFound="找不到房间",
+
+        -- Controllers
+        WebSocket={
+            invalidConnection="无效连接",
+            invalidAction="无效操作",
+            playerNotFound="找不到玩家",
+            connectionFailed="连接失败",
+        },
+        -- Filters
+        CheckPermission={
+            playerNotFound="找不到玩家",
+        },
+        -- Plugins
+        ConnectionManager={
+            playerInvalid="无效玩家",
+            playerNotFound="找不到玩家",
+            connectionReplaced="连接已更换",
+        },
+        NoticeManager={
+            noticeNotFound="找不到公告",
+        },
+        PlayerManager={
+            invalidCode="无效验证码",
+            invalidEmail="无效邮箱",
+            playerNotFound="找不到玩家",
+            invalidEmailPass="邮箱或密码无效",
+            emailExists="邮箱存在",
+            emailSendError="邮箱发送错误",
+        },
+        -- Strategies
+        PlayerRole={
+            invalidRole="无效角色",
+            invalidTarget="无效目标",
+        },
+        PlayerType={
+            invalidType="无效类型",
+            roomFull="房间已满",
+        },
+        RoomJoin={
+            wrongPassword="密码错误",
+        },
+    },
+
+    tooFrequent="操作太频繁",
+    roomPasswordChanged="房间密码已更改",
     oldVersion="最新版本$1可以下载了！",
-    needUpdate="请更新游戏！",
     versionNotMatch="版本不一致！",
     notFinished="暂未完成，敬请期待！",
 
-    jsonError="json错误",
-
     noUsername="请填写用户名",
-    wrongEmail="邮箱格式错误",
+    wrongEmail="无效邮箱地址",
+    wrongCode="无效验证码",
     noPassword="请填写密码",
     diffPassword="两次密码不一致",
-    registerRequestSent="注册请求已发送",
-    registerOK="注册成功！",
-    loginOK="登录成功",
-    accessOK="身份验证成功",
+    checkEmail="请查看邮箱验证码",
 
-    wsConnecting="正在连接",
-    wsFailed="连接失败",
-    wsClose="连接被断开:",
+    wsFailed="连接失败: $1",
+    wsClose="连接断开: $1",
     netTimeout="连接超时",
+    serverDown="唉哟!服务器不在线",
+    requestFailed="请求失败",
 
-    onlinePlayerCount="在线人数",
+    onlinePlayerCount="在线人数: $1",
     createRoomSuccessed="创建房间成功！",
+    playerKicked="$1 把 $2 移出了房间",
+    becomeHost="$1 成为了房主",
     started="游戏中",
-    joinRoom="进入房间",
-    leaveRoom="离开房间",
+    joinRoom="$1 进入房间",
+    leaveRoom="$1 离开房间",
+    roomRemoved="房间被解散",
     ready="各就各位！",
-    connStream="正在连接",
-    waitStream="等待其他人连接",
     spectating="观战中",
-    chatRemain="人数:",
-    chatStart="------消息的开头------",
-    chatHistory="------以上是历史消息------",
+
+
 
     keySettingInstruction="点击添加键位绑定\nesc取消选中\n退格键清空选中",
     customBGhelp="把图片文件拖到这个窗口里使用自定义背景",
     customBGloadFailed="自定义背景的图片文件格式不支持",
 
     errorMsg="Techmino遭受了雷击，需要重新启动。\n我们已收集了一些错误信息，你可以向作者进行反馈。",
-    tryAnotherBuild="[解码UTF-8错误] 如果你现在用的是Windows系统，请重新下载 Techmino-32位 或者 Techmino-64位 (和现在运行的不一样的那个)。",
+    tryAnotherBuild="[解码UTF-8错误] 如果你现在用的是Windows系统，请重新下载 Techmino-32/64位 (和现在运行的不一样的那个)。",
 
     modInstruction="选择你要使用的Mod！\n不同Mod会用不同的方式改变初始游戏规则(可能导致不能正常游玩)\n来开发新玩法或者挑战自我吧！\n提醒:开启一些Mod会让成绩无效，你也可以用键盘开关Mod，按住shift反向",
     modInfo={
@@ -176,7 +240,7 @@ return{
         "落块:",
         "消行/挖掘:",
         "攻击/挖掘攻击:",
-        "上涨/接收/抵消:",
+        "上涨(接收-抵消):",
         "消除:",
         "Spin:",
         "B2B/B3B/PC/HPC:",
@@ -198,16 +262,16 @@ return{
         "多余操作/极简率:",
     },
     aboutTexts={
-        "这只是一个普通的方块游戏",
+        "这只是一个普通的*方块游戏*",
         "从C2/IO/JS/WWC/KOS等方块获得过灵感",
         "",
         "使用LÖVE引擎",
         "错误或者建议请附带截图发送到内测群或者作者邮箱~",
-        "仅通过官网 home.techmino.org 免费下载/更新",
+        "仅通过官网(见主菜单词典) 免费下载/更新",
         "其他渠道获得游戏皆有被修改/加广告/植入病毒的风险，程序只申请了振动&联网权限！",
         "若由于被修改的本游戏产生的各种损失作者不负责(怎么负责啊我又没法管)",
-        FNNS and"/"or"请从正规途径获得最新版，游戏现为免费，不过有打赏当然感谢啦~",
-        FNNS and"/"or"更多信息见小z词典",
+        FNNS and "/" or "请从正规途径获得最新版，游戏现为免费，不过有打赏当然感谢啦~",
+        FNNS and "/" or "更多信息见小z词典",
     },
     staff={
         "原作者  MrZ",
@@ -240,7 +304,7 @@ return{
         "LawrenceLiu",
         "Gompyn",
         "flaribbit",
-        "schh",
+        "scdhh",
         "",
         "视觉设计、UI和UX",
         "MrZ",
@@ -270,6 +334,7 @@ return{
         "Miya",
         "Xiaoya",
         "Mono",
+        "Flore",
         "MrZ",
         "Trebor",
         "",
@@ -281,11 +346,11 @@ return{
         "ScF",
         "C₂₉H₂₅N₃O₅",
         "NOT_A_ROBOT",
-        "sakurw",
-        "Airun",
-        "幽灵3383",
+        "XMiao",
+        "sakurw, Airun, 幽灵3383",
+        "Shard Nguyễn, Squishy, TVN community",
         "",
-        "Performances",
+        "演出",
         "Electric283",
         "Hebomai",
         "",
@@ -309,6 +374,7 @@ return{
         "huaji2369",
         "Lexitik",
         "Tourahi Anime",
+        "PopUpWaffles",
         "[All other test staff]",
         "…And You!",
     },
@@ -322,12 +388,42 @@ return{
         Cold_Clear [MinusKelvin]
         json.lua [rxi]
         profile.lua [itraykov]
+        sha2 [Egor Skriptunoff]
     ]],
     support="支持作者",
+    dict={ -- Message from Sea: credit to User670 for helping me out this part.
+        sizeChanged="已更改字号为$1",
+        sizeReset="字号已重置",
+        helpText=[[
+小Z词典操作说明
+
+鼠标/触摸屏：
+        点击左侧列表中的项目以选择词条
+        点击 [$14] 复制词条文本
+        点击 [$15] 打开词条中的链接（如果有）
+
+键盘：
+        按 [F1] 显示帮助
+        按 [$1] 或 [$2] 滚动文本
+        按 [$3] 打开上一词条，按 [$4] 打开下一词条。按住 [Ctrl] 加速
+        按 [-] 缩小字号，[+] 增大字号，[0] 恢复默认字号
+        按 [Ctrl + C] 复制词条文本
+        按 [$16] （上下文菜单键/应用程序键）打开词条中的链接（如果有）
+
+手柄：
+        按 $10 to 显示帮助
+        按 $5 或 $6 滚动文本
+        按 $7 打开上一词条，按 $8 打开下一词条。按住 $11 加速
+        按住 $11 并按 $6 缩小字号，或 $5 增大字号]]
+        -- 1-4: Up, Down, Left, Right
+        -- 5-8: Up, Down, Left, Right but D-Pad
+        -- 9-12: X, Y, A, B
+        -- 13-16: Help, Copy, Open, MENU
+    },
     WidgetText={
         main={
             offline="单机游戏",
-            qplay="快速开始",
+            qplay="快速开始: ",
             online="联网游戏",
             custom="自定义",
             setting="设置",
@@ -358,13 +454,13 @@ return{
             tas="TAS (T)",
         },
         net_menu={
-            league="Tech League",
-            ffa="FFA",
+            galaxim="Galaxim",
             rooms="房间列表",
+            resetPW="重置密码",
             logout="退出登录",
         },
-        net_league={
-            match="匹配对手",
+        net_galaxim={
+            match="进入模拟",
         },
         net_rooms={
             password="密码",
@@ -386,6 +482,7 @@ return{
             visible="能见度",
             freshLimit="锁延刷新限制",
 
+            sequence="序列模式",
             fieldH="场地高度",
             bufferLimit="缓冲上限",
             heightLimit="高度上限",
@@ -400,7 +497,7 @@ return{
             capacity="房间容量",
             create="创建",
 
-            ospin="O-spin",
+            ospin="TRS O-spin",
             fineKill="强制极简",
             b2bKill="强制B2B",
             lockout="锁定在外时失败",
@@ -437,7 +534,6 @@ return{
             sysCursor="使用系统光标",
             autoPause="失去焦点自动暂停",
             autoSave="破纪录自动保存",
-            autoLogin="启动时自动登录",
             simpMode="简洁模式",
         },
         setting_video={
@@ -478,10 +574,17 @@ return{
             power="电量和时间",
             clean="绘制优化",
             fullscreen="全屏",
+            portrait="竖屏",
+            msaa="抗锯齿等级",
 
             bg_on="普通背景",
             bg_off="关闭背景",
             bg_custom="应用自定义背景",
+            bg_custom_base64="从剪切板导入图片\n(Base64编码的PNG/JPG)",
+            defaultBG="默认背景",
+            resetDbg="改回默认",
+            lockBG="锁定背景",
+            noTheme="关闭节日主题",
 
             blockSatur="方块饱和度",
             fieldSatur="场地饱和度",
@@ -512,6 +615,7 @@ return{
 
             das="DAS:",arr="ARR:",
             dascut="DAS打断:",
+            irscut="IRS打断",
             dropcut="误硬降打断:",
             sddas="软降DAS:",sdarr="软降ARR:",
             ihs="提前Hold",
@@ -616,7 +720,7 @@ return{
 
             bufferLimit="缓冲上限",
             heightLimit="高度上限",
-            ospin="O-spin",
+            ospin="TRS O-spin",
             fineKill="强制极简",
             b2bKill="强制B2B",
             lockout="锁定在外时失败",
@@ -689,22 +793,18 @@ return{
         },
         login={
             title="登录",
-            register="注册",
-            email="邮箱",
-            password="密码",
-            showEmail="显示邮箱",
-            keepPW="保存密码",
-            login="登录",
+            ticket="登录口令",
+            authorize="获取口令",
+            paste="粘贴口令",
+            submit="登录",
         },
-        register={
-            title="注册",
-            login="登录",
-            username="用户名",
-            email="邮箱:",
-            password="密码:",
-            password2="确认密码:",
-            register="注册",
-            registering="等待服务器响应……",
+        reset_password={
+            title="重置密码",
+            send="发送验证码",
+            code="验证码",
+            password="密码",
+            password2="确认密码",
+            setPW="设置密码",
         },
         account={
             title="帐户",
@@ -767,7 +867,9 @@ return{
         ['sprint_100l']=    {"竞速",        "100L",     "消除100行"},
         ['sprint_400l']=    {"竞速",        "400L",     "消除400行"},
         ['sprint_1000l']=   {"竞速",        "1000L",    "消除1000行"},
-        ['secret_grade']=   {"秘密段位",    "",         "按照提示完成经典的“大于号”拼图"},
+        ['construct_sg']=   {"拼花",        "秘密段位",  "按照提示完成经典的“大于号”拼图"},
+        ['construct_checker']={"拼花",      "棋盘",      "按照提示搭建棋盘的图案"},
+        ['construct_invsg']=  {"拼花",      "斜线",      "按照提示搭建斜线图案"},
         ['sprintPenta']=    {"竞速",        "五连块",     "伤脑筋十八块"},
         ['sprintMPH']=      {"竞速",        "MPH",      "纯随机\n无预览\n无暂存"},
         ['sprint123']=      {"竞速",        "M123",     "40L，但只有1~3连块"},
@@ -775,10 +877,10 @@ return{
         ['dig_40l']=        {"挖掘",        "40L",      "挖掘40行"},
         ['dig_100l']=       {"挖掘",        "100L",     "挖掘100行"},
         ['dig_400l']=       {"挖掘",        "400L",     "挖掘400行"},
-        ['dig_eff_10l']=    {"挖掘",        "效率 10L",   "用尽量少的块数挖掘10行"},
-        ['dig_eff_40l']=    {"挖掘",        "效率 40L",   "用尽量少的块数挖掘40行"},
-        ['dig_eff_100l']=   {"挖掘",        "效率 100L",  "用尽量少的块数挖掘100行"},
-        ['dig_eff_400l']=   {"挖掘",        "效率 400L",  "用尽量少的块数挖掘400行"},
+        ['dig_eff_10l']=    {"挖掘",        "效率 10L",   "用最少的块数挖掘10行"},
+        ['dig_eff_40l']=    {"挖掘",        "效率 40L",   "用最少的块数挖掘40行"},
+        ['dig_eff_100l']=   {"挖掘",        "效率 100L",  "用最少的块数挖掘100行"},
+        ['dig_eff_400l']=   {"挖掘",        "效率 400L",  "用最少的块数挖掘400行"},
         ['dig_quad_10l']=   {"挖掘",        "消四10L",   "挖掘10行，但只能消四"},
         ['drought_n']=      {"干旱",        "100L",     "你I没了"},
         ['drought_l']=      {"干旱+",       "100L",     "后 妈 发 牌"},
@@ -800,8 +902,8 @@ return{
         ['round_h']=        {"回合制",       "困难",      "下棋模式"},
         ['round_l']=        {"回合制",       "疯狂",      "下棋模式"},
         ['round_u']=        {"回合制",       "极限",      "下棋模式"},
-        ['big_n']=          {"大方块",       "普通",     "模拟10*5场地的玩法(标准尺寸的一半)"},
-        ['big_h']=          {"大方块",       "困难",     "模拟10*5场地的玩法(标准尺寸的一半)"},
+        ['big_n']=          {"大方块",       "普通",     "模拟5×10场地(标准尺寸的一半)"},
+        ['big_h']=          {"大方块",       "困难",     "模拟5×10场地(标准尺寸的一半)"},
         ['master_n']=       {"大师",        "普通",      "20G初心者练习"},
         ['master_h']=       {"大师",        "困难",      "上级者20G挑战"},
         ['master_m']=       {"大师",        "大师",      "大师20G"},
@@ -810,12 +912,9 @@ return{
         ['master_g']=       {"大师",        "段位考试",    "20G段位考试"},
         ['master_ex']=      {"宗师",        "EX",       "成为方块大师"},
         ['master_instinct']={"大师",        "本能",      "当前块在出现后一小会后会隐形"},
-        ['strategy_e']=     {"策略堆叠",     "简单",      "20G堆叠中速决策练习"},
+        ['strategy_e_plus']={"策略堆叠",     "简单+",     "20G堆叠中速决策练习\n无Hold"},
         ['strategy_h']=     {"策略堆叠",     "困难",      "20G堆叠快速决策练习"},
         ['strategy_u']=     {"策略堆叠",     "极限",      "20G堆叠极速决策练习"},
-        ['strategy_e_plus']={"策略堆叠",     "简单+",     "20G堆叠中速决策练习\n无Hold"},
-        ['strategy_h_plus']={"策略堆叠",     "困难+",     "20G堆叠快速决策练习\n无Hold"},
-        ['strategy_u_plus']={"策略堆叠",     "极限+",     "20G堆叠极速决策练习\n无Hold"},
         ['blind_e']=        {"隐形",        "半隐",      "不强大脑"},
         ['blind_n']=        {"隐形",        "全隐",      "挺强大脑"},
         ['blind_h']=        {"隐形",        "瞬隐",      "很强大脑"},
@@ -837,7 +936,7 @@ return{
         ['defender_l']=     {"防守",        "疯狂",      "防守练习"},
         ['dig_h']=          {"挖掘",        "困难",      "挖掘练习"},
         ['dig_u']=          {"挖掘",        "极限",      "挖掘练习"},
-        ['c4wtrain_n']=     {"C4W练习",     "普通",      "无 限 连 击"},
+        ['c4wtrain_n']=     {"C4W练习",     "普通",      "消除100行"},
         ['c4wtrain_l']=     {"C4W练习",     "疯狂",      "无 限 连 击"},
         ['pctrain_n']=      {"全清训练",     "普通",      "简易PC题库，熟悉全清定式的组合"},
         ['pctrain_l']=      {"全清训练",     "疯狂",      "困难PC题库，强算力者进"},
@@ -867,6 +966,7 @@ return{
         ['infinite']=       {"无尽",         "",        "沙盒"},
         ['infinite_dig']=   {"无尽:挖掘",     "",        "挖呀挖呀挖"},
         ['marathon_inf']=   {"马拉松",       "无尽",      "无尽马拉松"},
+        ['spinren']=        {"Spin连击",     "效率",      "掌管效率的神"},
 
         ['custom_clear']=   {"自定义",       "普通"},
         ['custom_puzzle']=  {"自定义",       "拼图"},
@@ -884,7 +984,7 @@ return{
         "1next 6hold！",
         "3.1415926535897932384(\\d{3})",
         "3next 1hold？",
-        "40行世界纪录:14.708s by hiryu",
+        "40行世界纪录: 13.430s by WestL",
         "6236326236327175",
         "626in1",
         "6next 1hold！",
@@ -893,7 +993,6 @@ return{
         "本游戏还在测试中，出各种问题都是有可能的哦",
         "本游戏使用精简版字体，可能有些特殊字符不能正确显示",
         "别催了，在做了！",
-        "不要卖弱不要卖弱不要卖弱",
         "不知道有多少人玩游戏的时候会关心游戏是谁做的",
         "部分手机系统开启震动会导致严重卡顿",
         "彩色消除即将到来！",
@@ -901,7 +1000,7 @@ return{
         "吃键？真的吗？建议回放看看到底按没按到，按了多久",
         "打铁.mp4",
         "大概还是有人会看tip的",
-        "大家认为的俄罗斯方块很可能不是你以为的俄罗斯方块，场合合适的时候可以适当提醒一下哦",
+        "大家认为的俄罗斯方块很可能不是你以为的俄罗斯方块，有需要的时候可以适当提醒一下哦",
         "大满贯10连击消四全清！",
         "戴上耳机以获得最佳体验",
         "多年小游戏玩家表示痛恨拖时间的假加载",
@@ -912,7 +1011,6 @@ return{
         "方块能吃吗",
         "感觉明明按键了但是没反应？你真的按到了吗？",
         "感谢群友帮忙想tip",
-        "隔壁不在乎玩家意见但是我们在乎，没人提过的合理建议一定会回应",
         "隔断消除即将到来！",
         "还能写些什么tip呢",
         "好像还没人能用脚打块打到一定水平",
@@ -934,7 +1032,7 @@ return{
         "你今天的人品值是(满分100):"..math.random(100),
         "你们考虑过Z酱的感受吗？没有！你们只考虑你自己。",
         "配乐是有考虑到模式氛围的哦",
-        "请谨慎向没有方块经验的玩家推荐，会对本游戏的生存环境造成影响，感谢配合。",
+        "拼图与趣味",
         "请勿使用三只手游玩",
         "全球目前应该没人能全X评价(大爆炸不算)",
         "如何O-spin: 一秒转626圈(误",
@@ -945,11 +1043,8 @@ return{
         "挖掘能力在对战里非常非常非常重要！！！！",
         "玩到一半弹出消息框？快去设置禁止弹窗",
         "玩得开心的话游戏作者也会很开心哦",
-        "我曾经在极度愤怒的时候15秒消了40行",
         "我们是不是第一个在方块游戏做tip的？",
-        "我一个滑铲就挖了个11renPC",
         "物理hold了解一下",
-        "希望极简率没事",
         "希望你们都能喜欢Z……哦不是，喜欢Techmino",
         "享受Tech的特色旋转系统！",
         "写不出那种很酷的音乐(哭",
@@ -958,16 +1053,15 @@ return{
         "音游方块是一家(暴论",
         "游戏使用LÖVE引擎制作",
         "游戏使用un……LÖVE引擎制作",
+        "游戏原声已上架网易云音乐",
         "有建议的话可以反馈给作者~",
-        "有两个模式是以东方Project里的角色为主题的",
         "这不是休闲游戏……别怪关卡要求太高，多练吧",
-        "中文方块百科全书：tetris.huijiwiki.com",
+        "中文方块百科全书：tetriswiki.cn",
         "众所周知mac不能拿来玩游戏",
         "作业没做完别玩手机",
-        "作者40行sub26了",
-        "作者电脑上装了11个方块",
-        "作者浏览器收藏夹里有6个方块",
-        "ALLSPIN!",
+        "作者40行sub25了",
+        "作者电脑上装了16个方块",
+        "作者浏览器收藏夹里有7个方块",
         "Am G F G",
         "B2B2B？？？",
         "B2B2B2B并不存在……",
@@ -978,7 +1072,6 @@ return{
         "iOS设备使用键盘控制可能会有问题，还是先只用触屏吧",
         "Let-The-Bass-Kick！",
         "MrZ是谁啊",
-        "pps-0.01",
         "sofunhowtoget",
         "STSD必死",
         "Techmino 英/'tɛkminəʊ/ 美/'tɛkminoʊ/ n.铁壳米诺 (游戏名)",
@@ -1017,12 +1110,13 @@ return{
         "Techmino 濂界帺锛",
         "Techmino console了解一下",
         "Techmino: App意外退出。",
+        "Techmino: 耗电异常 ——在后台阻止系统休眠",
         "Techmino.exe 已停止工作",
         "TechminOS coming s∞n",
         "viod main[]",
-        "while(false)",
+        "while (false)",
 
-        -- 其他游戏梗
+        -- 其他乱七八糟梗
         "啊哈哈哈哈哈，T块来咯",
         "不轻不重，手感真是好极了",
         "不要大力拍打或滑动哦",
@@ -1030,8 +1124,9 @@ return{
         "单手也能玩！",
         "感谢Orzmic为这个tip框提供修改意见",
         "感谢Phigros提供(确信)部分tip模板",
+        "科目三：(见词典\"新人练习路线\")",
         "你的双手是为了你的一生服务的，而不是Techmino",
-        "你有一个好",
+        "你有一块没极简",
         "你这块是金子做的还是垃圾行是金子做的",
         "你准备好了吗？",
         "请勿大力敲打设备！敲坏了就没有Techmino玩了",
@@ -1041,6 +1136,19 @@ return{
         "要盯着bug不放",
         "这打块，多是一件美事",
         "做，做碌鸠啊做，打块先啦！",
+        "你能做到。",
+        "自定义模式偶遇2效机器人，拼尽全力无法战胜",
+        "不紧不慢不快不慢地起楼",
+        "你起的楼顶上尖尖的",
+        "啊我操SRS怎么这么坏",
+        "哇多么好的游戏啊",
+        "我曾经在极度愤怒的时候15秒消了40行",
+        "我一个滑铲就挖了个11renPC",
+        "希望极简率没事",
+        "pps-0.01",
+        "太好了是Allspin我们有救了",
+        "IO打排位 输输赢赢输输赢 技术待提升",
+        "铁壳挖掘部 放下七块就挖开 续作也好玩",
         {C.Z,"1，2，",C.C,"⑨",C.Z,"！！！！！"},
         {C.C,"<PURE ",C.P,"MEMORY>"},
         {C.H,"暂定段位:9"},
@@ -1064,6 +1172,8 @@ return{
         {C.R,"DD",C.Z,"炮=",C.P,"TS",C.R,"D",C.Z,"+",C.P,"TS",C.R,"D",C.Z,"炮"},
         {C.R,"DT",C.Z,"炮=",C.P,"TS",C.R,"D",C.Z,"+",C.P,"TS",C.R,"T",C.Z,"炮"},
         {C.R,"LrL ",C.G,"RlR ",C.B,"LLr ",C.O,"RRl ",C.P,"RRR LLL ",C.C,"FFF ",C.Y,"RfR RRf rFF"},
+        {C.O,"穿",C.lB,"梭",C.Z,"之力量"},
+        {C.lP,"Extraordinary!"},
 
         -- 时间碎片
         "时间碎片[000] 2021/11/21加入这个版块",
@@ -1080,13 +1190,12 @@ return{
         "时间碎片[011] V0.13.0联网对战测试",
         "时间碎片[012] V0.13.2加入任意场地高度",
         "时间碎片[013] V0.13.3加入控制台",
-        "时间碎片[014] V0.14.4加入第一首非Beepbox制作的BGM",
-        "时间碎片[015] V0.14.5加入第一首社区玩家自制BGM",
-        "时间碎片[016] V0.15.5加入录像回放菜单",
-        "时间碎片[017] V0.16.0加入BIRS",
-        "时间碎片[018] V0.16.2加入打击垫样式的音效室",
-        "时间碎片[019] V0.17.0加入手柄的摇杆和扳机支持",
-        "时间碎片[020] V0.17.3准备停止开发老Techmino，进入维护期",
+        "时间碎片[014] V0.14.5加入第一首社区玩家自制BGM",
+        "时间碎片[015] V0.15.5加入录像回放菜单",
+        "时间碎片[016] V0.16.0加入BIRS",
+        "时间碎片[017] V0.16.2加入打击垫样式的音效室",
+        "时间碎片[018] V0.17.0加入手柄的摇杆和扳机支持",
+        "时间碎片[019] V0.17.3准备停止开发老Techmino，进入维护期",
 
         -- 豆知识
         "豆知识[001]总共有400多条tip哦",
@@ -1107,7 +1216,7 @@ return{
         "豆知识[016]本游戏的B2B是气槽机制，和传统的开关机制不一样哦",
         "豆知识[017]本游戏内置了几个休(yìng)闲(hé)小游戏哦~",
         "豆知识[018]本游戏在设计的时候受到了大量其他块游甚至一些音游的启发",
-        "豆知识[019]必须要软降才能到达的位置都会判定为极简操作",
+        "豆知识[019]必须要软降才能到达的位置不会被判定为非极简操作",
         "豆知识[020]别看攻击效率不高，其实消四还是很强的",
         "豆知识[021]别问游戏名字怎么取的，问就是随便想的",
         "豆知识[022]不同人打40行最合适的方式不一样，s1w/63/散消/s2w……",
@@ -1207,6 +1316,7 @@ return{
         "群友名言[002]“我要陪伴着tech一步步成长，然后就可以疯狂的享受他”",
         "群友名言[003]“太super啦，不愧是guideline”",
         "群友名言[004]“憋惦记你那*26了（”",
+        "群友名言[005]“如果bug有颜色，那一定是___”",
 
         -- Frt评
         "Frt评[01]“成天被夸赞‘好玩’的”",
@@ -1241,9 +1351,9 @@ return{
 
         -- Z
         "Z哲[01]方块教会我们，合群了就会消失，……",
-        "Z哲[02]假如生活欺骗了你，不要悲伤，不要心急，还有块陪着你",
-        "Z哲[03]……，合群了就会消失，不合群世界毁灭(指game over",
-        "Z哲[04]……，合群了就会消失，但消失不代表没有意义",
+        "Z哲[02]……，合群了就会消失，不合群世界毁灭(指game over",
+        "Z哲[03]……，合群了就会消失，但消失不代表没有意义",
+        "Z哲[04]假如生活欺骗了你，不要悲伤，不要心急，还有块陪着你",
         "Z哲[05]没有量化就没有对比，……",
         "Z哲[06]……，没有对比就没有伤害",
         "Z哲[07]方块不是你生活的全部，适当走出去看看",
@@ -1276,10 +1386,11 @@ return{
         "Z推[10]Phigros好玩！",
         "Z推[11]VVVVVV好玩！",
         "Z推[12]Ballance好玩！",
-        "Z推[13]Zuma好玩！",
-        "Z推[14]魔方好玩！",
-        "Z推[15]15puzzle好玩！",
-        "Z推[16]扫雷好玩！",
+        "Z推[13]Bejeweled3好玩！",
+        "Z推[14]Zuma好玩！",
+        "Z推[15]魔方好玩！",
+        "Z推[16]15puzzle好玩！",
+        "Z推[17]扫雷好玩！",
 
         -- 可爱！
         {C.lP,"口〇口",C.Z," 可爱！"},
@@ -1290,11 +1401,13 @@ return{
         {C.lP,"秘密数字:626"},
         {C.N,"Lua",C.Z,"天下第一"},
         {C.lR,"Z ",C.lG,"S ",C.lS,"J ",C.lO,"L ",C.lP,"T ",C.lY,"O ",C.lC,"I"},
+        {C.lR,"A",C.lG,"L",C.lS,"L",C.lO,"S",C.lP,"P",C.lY,"I",C.lC,"N",C.Z,"!"},
         {C.R,"《滥用DMCA》"},
         {C.R,"《知识产权法》"},
         {C.R,"本游戏难度上限很高，做好心理准备。"},
         {C.R,"上班时间不许摸鱼打块！"},
         {C.R,"上课时间不许摸鱼打块！"},
         {C.W,"uid:225238922"},
-    }
+    },
+    pumpkin="我是南瓜",
 }
